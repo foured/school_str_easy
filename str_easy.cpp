@@ -14,11 +14,14 @@ void itc_print_copy_str(std::string str, int n) {
 	}
 }
 void itc_first_end_three(std::string str) {
-	if (itc_len(str) <= 5) {
-		std::cout << str[0] * itc_len(str) << std::endl;
+	int len = itc_len(str);
+	if (len <= 5) {
+		for (int i = 0; i < len; i++) {
+			std::cout << str[0];
+		}
 	}
 	else {
-		std::cout << str[0] << str[1] << str[2] << str[itc_len(str) - 3] << str[itc_len(str) - 2] << str[itc_len(str) - 1] << std::endl;
+		std::cout << str[0] << str[1] << str[2] << str[len - 3] << str[len - 2] << str[len - 1] << std::endl;
 	}
 }
 int itc_count_char_in_str(char ch, std::string str) {
@@ -31,7 +34,7 @@ int itc_count_char_in_str(char ch, std::string str) {
 std::string itc_even_place(std::string str) {
 	std::string res = "";
 	for (int i = 0, len = itc_len(str); i < len; i++) {
-		if ((int)str[i] %2 == 0) res+= str[i];
+		if ((int)str[i] % 2 == 0) res += str[i];
 	}
 	if (res == "") return "-1";
 	return res;
@@ -45,7 +48,7 @@ double itc_percent_lower_uppercase(std::string str) {
 		else if (cc >= 'a' && cc <= 'z')
 			nu++;
 	}
-	return nu / u * 100;
+	return nu / u;
 }
 std::string itc_reverse_str(std::string str) {
 	std::string res = "";
@@ -82,7 +85,7 @@ bool itc_equal_reverse(std::string str) {
 		firstPart += str[i];
 		secondPart += str[len - i];
 	}
-	
+
 	return firstPart == secondPart;
 }
 std::string itc_cmp_str(std::string str1, std::string str2, int num) {
@@ -96,7 +99,7 @@ std::string itc_cmp_str(std::string str1, std::string str2, int num) {
 			res1 += str1[i];
 			res2 += str1[num + i];
 		}
-		res = res1 + str2 + res2;
+		res = res1 + str2[0] + str2[1] + res2;
 	}
 	else {
 		res = str1;
@@ -132,7 +135,7 @@ std::string itc_three_str(std::string str1, std::string str2, std::string str3) 
 		if (i < idx) {
 			res1 += str1[i];
 		}
-		else if(i >= idx + len2) {
+		else if (i >= idx + len2) {
 			res2 += str1[i];
 		}
 	}
@@ -145,7 +148,7 @@ int itc_max_char_on_end(std::string str) {
 	int temp_maxNumSequence = 0;
 	for (int i = 0, len = itc_len(str); i < len; i++) {
 		char cc = str[i];
-		if (cc >= '1' && cc <= '9') {
+		if (cc >= '0' && cc <= '9') {
 			temp_maxNumSequence++;
 		}
 		else {
