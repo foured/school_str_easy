@@ -65,7 +65,7 @@ std::string itc_slice_str(std::string str, int start, int end) {
 	}
 	else {
 		int len = itc_len(str);
-		if (end > len) end = len;
+		if (end > len) end = len - 1;
 
 		for (int i = start; i <= end; i++) {
 			res += str[i];
