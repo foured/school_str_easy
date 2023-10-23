@@ -1,4 +1,4 @@
-#include "easy_str.h"
+#include "str_easy.h"
 
 std::string itc_hello_str(std::string name) {
 	return "Hello, " + name;
@@ -91,19 +91,11 @@ bool itc_equal_reverse(std::string str) {
 std::string itc_cmp_str(std::string str1, std::string str2, int num) {
 	std::string res = "";
 	int len = itc_len(str1);
-	if (str2 != "") {
-		std::string res1 = "";
-		std::string res2 = "";
-
-		for (int i = 0; i < num; i++) {
-			res1 += str1[i];
-			if(num + i < len)
-				res2 += str1[num + i];
+	for (int i = 0; i < len; i++) {
+		if (i == num) { 
+			res += str2; 
 		}
-		res = res1 + str2 + res2;
-	}
-	else {
-		res = str1;
+		res += str1[i];
 	}
 
 	return res;
@@ -147,7 +139,8 @@ std::string itc_three_str(std::string str1, std::string str2, std::string str3) 
 int itc_max_char_on_end(std::string str) {
 	int maxNumSequence = 0;
 	int temp_maxNumSequence = 0;
-	for (int i = 0, len = itc_len(str); i < len; i++) {
+	int len = itc_len(str);
+	for (int i = 0; i < len; i++) {
 		char cc = str[i];
 		if (cc >= '0' && cc <= '9') {
 			temp_maxNumSequence++;
@@ -158,5 +151,7 @@ int itc_max_char_on_end(std::string str) {
 			temp_maxNumSequence = 0;
 		}
 	}
+	if (temp_maxNumSequence > maxNumSequence)
+		maxNumSequence = temp_maxNumSequence;
 	return maxNumSequence;
 }
