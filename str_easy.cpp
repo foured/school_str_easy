@@ -1,4 +1,4 @@
-#include "str_easy.h"
+#include "easy_str.h"
 
 std::string itc_hello_str(std::string name) {
 	return "Hello, " + name;
@@ -90,16 +90,17 @@ bool itc_equal_reverse(std::string str) {
 }
 std::string itc_cmp_str(std::string str1, std::string str2, int num) {
 	std::string res = "";
-
+	int len = itc_len(str1);
 	if (str2 != "") {
 		std::string res1 = "";
 		std::string res2 = "";
 
 		for (int i = 0; i < num; i++) {
 			res1 += str1[i];
-			res2 += str1[num + i];
+			if(num + i < len)
+				res2 += str1[num + i];
 		}
-		res = res1 + str2[0] + str2[1] + res2;
+		res = res1 + str2 + res2;
 	}
 	else {
 		res = str1;
